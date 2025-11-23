@@ -1,5 +1,5 @@
-import path from 'node:path'
 import fs from 'node:fs/promises'
+import path from 'node:path'
 import glob from 'fast-glob'
 
 export default function StaticCopy({ targets }) {
@@ -12,19 +12,19 @@ export default function StaticCopy({ targets }) {
     async writeBundle() {
       const rootPath = config.build.outDir
       await Promise.all(
-        targets.map(async ({ src, dest, modifier = (data) => data }) => {
+        targets.map(async ({ src, dest, modifier = data => data }) => {
           const paths = await glob(src)
           const destinationPath = path.resolve(rootPath, dest)
           await processFiles(paths, destinationPath, modifier)
         })
       )
-    }
+    },
   }
 }
 
 async function processFiles(paths, dest, modifier) {
   await Promise.all(
-    paths.map(async (src) => {
+    paths.map(async src => {
       const isDirectory = (await fs.stat(src)).isDirectory()
       if (isDirectory) {
         return

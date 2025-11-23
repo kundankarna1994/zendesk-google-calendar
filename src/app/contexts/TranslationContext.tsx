@@ -1,5 +1,5 @@
 import { createContext } from 'react'
-import I18n from '../../lib/i18n'
+import type I18n from '../../lib/i18n'
 
 export const TranslationContext = createContext<{
   i18n: I18n

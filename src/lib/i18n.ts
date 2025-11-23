@@ -27,7 +27,7 @@ class I18n {
           this.translations = importedTranslations.default
           break
         }
-      } catch (error) {
+      } catch (_e) {
         intentLocales.shift()
       }
     } while (intentLocales.length)

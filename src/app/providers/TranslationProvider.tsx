@@ -1,7 +1,7 @@
-import { useState, useEffect, useCallback, ReactNode } from 'react'
-import { useClient } from '../hooks/useClient'
-import I18n from '../../lib/i18n'
+import { type ReactNode, useCallback, useEffect, useState } from 'react'
 import { TranslationContext } from '@/contexts/TranslationContext'
+import I18n from '../../lib/i18n'
+import { useClient } from '../hooks/useClient'
 
 const i18n = new I18n()
 

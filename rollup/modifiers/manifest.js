@@ -16,7 +16,7 @@ export function changeLocation(content, filename) {
 
   const manifestOutput = {
     _warning: `AUTOMATICALLY GENERATED FROM $/src/${filename} - DO NOT MODIFY THIS FILE DIRECTLY`,
-    ...manifest
+    ...manifest,
   }
 
   return JSON.stringify(manifestOutput, null, JS_INDENT)

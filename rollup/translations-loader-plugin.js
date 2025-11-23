@@ -1,10 +1,10 @@
-import fs from 'fs/promises'
-import path from 'path'
+import fs from 'node:fs/promises'
+import path from 'node:path'
 
 function translationFlatten(object, currentKeys = []) {
   const res = {}
 
-  Object.keys(object).forEach((key) => {
+  Object.keys(object).forEach(key => {
     const value = object[key]
 
     if (typeof value === 'object') {
@@ -34,10 +34,10 @@ export default function TranslationsLoader() {
 
         return {
           code: `export default ${JSON.stringify(translationFlatten(translations))};`,
-          map: null
+          map: null,
         }
       }
       return null
-    }
+    },
   }
 }

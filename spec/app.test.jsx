@@ -1,7 +1,7 @@
-import { describe, expect, it, vi, beforeEach } from 'vitest'
-import { render, screen, cleanup, waitFor } from '@testing-library/react'
-import { ClientProvider } from '../src/app/contexts/ClientProvider'
+import { cleanup, render, screen, waitFor } from '@testing-library/react'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
 import App from '../src/app/App'
+import { ClientProvider } from '../src/app/contexts/ClientProvider'
 
 const mockClient = {
   on: vi.fn((event, callback) => {
@@ -11,7 +11,7 @@ const mockClient = {
   }),
   get: vi.fn().mockResolvedValue({ currentUser: { locale: 'en' } }),
   context: vi.fn().mockResolvedValue({ location: 'ticket_sidebar' }),
-  invoke: vi.fn()
+  invoke: vi.fn(),
 }
 
 describe('App Components', () => {
@@ -20,7 +20,7 @@ describe('App Components', () => {
     vi.clearAllMocks()
     document.body.innerHTML = '<div id="root"></div>'
     vi.stubGlobal('ZAFClient', {
-      init: vi.fn().mockReturnValue(mockClient)
+      init: vi.fn().mockReturnValue(mockClient),
     })
   })
 

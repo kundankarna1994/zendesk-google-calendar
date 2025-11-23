@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { ClientContext } from '../contexts/ClientContext'
 
 export const useClient = () => {
@@ -19,7 +19,7 @@ export const useLocation = () => {
     client.context().then((data: any) => {
       setLocation(data.location)
     })
-  }, [setLocation, client])
+  }, [client])
 
   return location
 }

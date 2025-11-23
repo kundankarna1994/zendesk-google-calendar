@@ -1,4 +1,4 @@
-import { useMemo, useState, useEffect, ReactNode } from 'react'
+import { type ReactNode, useEffect, useMemo, useState } from 'react'
 import { ClientContext } from '@/contexts/ClientContext'
 
 export function ClientProvider({ children }: { children: ReactNode }) {
@@ -6,7 +6,7 @@ export function ClientProvider({ children }: { children: ReactNode }) {
   const [appRegistered, setAppRegistered] = useState(false)
 
   useEffect(() => {
-    client.on('app.registered', function () {
+    client.on('app.registered', () => {
       setAppRegistered(true)
     })
   }, [client])

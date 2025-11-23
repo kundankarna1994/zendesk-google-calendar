@@ -1,4 +1,4 @@
-import { expect, it, describe, beforeAll, vi } from 'vitest'
+import { beforeAll, describe, expect, it, vi } from 'vitest'
 import I18n from '../src/lib/i18n'
 
 const i18n = new I18n()
@@ -8,7 +8,7 @@ const mockEN = {
   'two.one': 'the second translation for: {{fname}}',
   'two.two': 'the second translation for: {{fname}}-{{lname}}',
   'three.one.one': 'the third translation from {{name}} for {{name}} should be {{name}}',
-  four: {}
+  four: {},
 }
 
 describe('i18n', () => {
@@ -53,7 +53,7 @@ describe('i18n', () => {
 
     it('interpolates one string', () => {
       const result = i18n.t('two.one', {
-        fname: 'Olaf'
+        fname: 'Olaf',
       })
       expect(result).toBe('the second translation for: Olaf')
     })
@@ -61,31 +61,31 @@ describe('i18n', () => {
     it('interpolates multiple strings', () => {
       const result = i18n.t('two.two', {
         fname: 'Olaf',
-        lname: 'K'
+        lname: 'K',
       })
       expect(result).toBe('the second translation for: Olaf-K')
     })
 
     it('interpolates duplicates strings', () => {
       const result = i18n.t('three.one.one', {
-        name: 'Olaf'
+        name: 'Olaf',
       })
       expect(result).toBe('the third translation from Olaf for Olaf should be Olaf')
     })
 
-    it('should throw error if translate keyword is not string', function () {
+    it('should throw error if translate keyword is not string', () => {
       expect(() => {
         i18n.t({})
       }).toThrow()
     })
 
-    it('should throw error if translation is not a string', function () {
+    it('should throw error if translation is not a string', () => {
       expect(() => {
         i18n.t('four')
       }).toThrow()
     })
 
-    it('should throw error if translate keyword is missing in the language file', function () {
+    it('should throw error if translate keyword is missing in the language file', () => {
       expect(() => {
         i18n.t('five')
       }).toThrow()
